@@ -68,26 +68,54 @@
 # 문제 19
 # 거스름돈을 계산하는 함수 작성하기
 
-def solution(price, money):
-    # answer = 0
-    # total = 0
-    # for i in price:
-    #     total += i
-    # answer = money-total
-    # if answer < 0:
-    #     answer = -1
-    # return answer
+# def solution(price, money):
+#     # answer = 0
+#     # total = 0
+#     # for i in price:
+#     #     total += i
+#     # answer = money-total
+#     # if answer < 0:
+#     #     answer = -1
+#     # return answer
+#
+#     # 거스름돈 방법 2> 하나씩 빼기
+#     answer = money
+#     for i in price:
+#         answer -= i
+#     if answer < 0:
+#         answer = -1
+#     return answer
+#
+# price = [1000, 5000, 500, 2000]
+# money = 10000
+# ret = solution(price, money)
+#
+# print("solution 함수의 반환 값은 ", ret, "입니다.")
 
-    # 거스름돈 방법 2> 하나씩 빼기
-    answer = money
-    for i in price:
-        answer -= i
-    if answer < 0:
-        answer = -1
+
+# 문제 20
+# k번째로 작은 수를 찾는 함수 작성하기
+def solution(arr, k):
+    answer = 0
+    temp = []
+
+    # 첫 번째 방법
+    for a in arr:
+        for b in a:
+            temp.append(b)
+
+    # 두 번째 방법
+    # for i in range(len(arr)):
+    #     for j in range(4):
+    #         temp.append(arr[i][j])
+
+    temp.sort()
+    answer = temp[k-1]
+
     return answer
 
-price = [1000, 5000, 500, 2000]
-money = 10000
-ret = solution(price, money)
+arr = [[5, 12, 4, 31], [24, 13, 11, 2], [43, 44, 19, 26], [33, 65, 20, 21]]
+k = 4
+ret = solution(arr, k)
 
 print("solution 함수의 반환 값은 ", ret, "입니다.")
