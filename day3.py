@@ -69,11 +69,19 @@
 # 거스름돈을 계산하는 함수 작성하기
 
 def solution(price, money):
-    answer = 0
-    total = 0
+    # answer = 0
+    # total = 0
+    # for i in price:
+    #     total += i
+    # answer = money-total
+    # if answer < 0:
+    #     answer = -1
+    # return answer
+
+    # 거스름돈 방법 2> 하나씩 빼기
+    answer = money
     for i in price:
-        total += i
-    answer = money-total
+        answer -= i
     if answer < 0:
         answer = -1
     return answer
@@ -83,4 +91,3 @@ money = 10000
 ret = solution(price, money)
 
 print("solution 함수의 반환 값은 ", ret, "입니다.")
-
