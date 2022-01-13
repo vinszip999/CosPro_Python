@@ -37,3 +37,37 @@
 # answer[i] += arr[i+k]
 # -->
 # answer[i] += arr[i*4+k]  # 과목별로 4개씩
+
+
+# 07 화면 내 이동 시 x와 y가 같은 위치 개수를 구하는 함수 수정하기
+# answer += 1
+# -->
+# if x == y: answer += 1  # x, y가 같을 때의 개수이다
+
+
+# 08 평균과 가장 큰 차이가 나는 점수 구하는 함수 수정하기
+# return b if a < b else a
+# -->
+# return b - a if a < b else a - b  # 두 값의 차이 변환
+
+
+# 09 단체 여행 숙소 방의 개수를 구하는 함수 수정하기
+# answer += i
+# -->
+# answer += i//k  # answer는 방 개수, i는 각 학년의 인원 수
+
+
+# 10 중간고사 폐지를 위한 설문조사 결과를 구하는 함수 작성하기
+# def solution(positive, negative):
+#     answer = [0, 0]
+#     total = 0  # 찬성과 반대를 합한 총 인원 수
+#     p_sum = 0  # 찬성 표의 총합
+#     n_sum = 0  # 반대 표의 총합
+#     for i in range(4):  # 학년
+#         for k in range(3):  # 단과대
+#             total += positive[i][k] + negative[i][k]
+#             p_sum += positive[i][k]
+#             n_sum += negative[i][k]
+#     answer[0] = int(p_sum / total * 100)
+#     answer[1] = int(n_sum / total * 100)
+#     return answer
