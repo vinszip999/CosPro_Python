@@ -180,21 +180,42 @@
 
 
 # 09 업다운 숫자게임 정답 찾는 함수 빈칸 채우기
-def solution(answer):
-    min = 1
-    max = 100
-    result = 0
-    for i in answer:
-        result = (max + min) / 2  # 이진 탐색처럼 중간 값보다 큰지 작은지 체크
-        if min == max or i == 'c':  # 값이 검색이 안되거나, 값을 찾았거나
-            break
-        if i == 'u':  # 답보다 작으면  max 값을 중간 값으로 설정, 다시 검색
-            max = result
-        if i == 'd':
-            min = result  # 답보다 크면  min 값을 중간 값으로 설정, 다시 검색
+# def solution(answer):
+#     min = 1
+#     max = 100
+#     result = 0
+#     for i in answer:
+#         result = (max + min) / 2  # 이진 탐색처럼 중간 값보다 큰지 작은지 체크
+#         if min == max or i == 'c':  # 값이 검색이 안되거나, 값을 찾았거나
+#             break
+#         if i == 'u':  # 답보다 작으면  max 값을 중간 값으로 설정, 다시 검색
+#             max = result
+#         if i == 'd':
+#             min = result  # 답보다 크면  min 값을 중간 값으로 설정, 다시 검색
+#     return result
+#
+#
+# answer = 'udduduudc'  # 테스트 값
+# ret = solution(answer)
+# print(ret)
+
+
+# 10 빌라의 세대별 전기요금 구하는 함수 빈칸 채우기
+# wats : 세대별 사용량, bill : 총합
+def solution(wats, bill):
+    result = [0 for _ in range(8)]
+    unit_price = int(bill / wats[0]) + 1  # 소수점 이하를 버리는 대신 1을 더한다
+    for i in range(len(wats)-1):  # range(8), range(len(result))도 가능
+        result[i] = wats[i+1] * unit_price  # result 와 wats 의 길이가 다르다
     return result
 
 
-answer = 'udduduudc'  # 테스트 값
-ret = solution(answer)
+bill = 1275
+wat = [10, 20, 60, 30, 10, 20, 60, 30]
+t = 0
+for i in wat:
+    t += i
+wats = [t]+wat    # wats.extends(wat)
+print(wats)
+ret = solution(wats, bill)
 print(ret)
