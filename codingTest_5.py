@@ -165,15 +165,36 @@
 
 
 # 08 직선으로 교차하는 두 직선과 x축의 선이 이루는 삼각형 면적을 구하는 함수 작성하기
-def solution(x, y):
-    answer = 0
-    b1 = y - x   # y = x+b1에서의 b1졀편
-    b2 = y + x  # y = -x+b2에서의 b2졀편
-    a1 = (y * (x - (-b1))) / 2.0  # y = x + b1에서  y=0 일 때  x값  -b1
-    a2 = (y * (b2 - x)) / 2.0  # y = -x + b2에서 y=0 일 때 x값  b2
-    answer = a1 + a2
-    return answer
+# def solution(x, y):
+#     answer = 0
+#     b1 = y - x   # y = x+b1에서의 b1졀편
+#     b2 = y + x  # y = -x+b2에서의 b2졀편
+#     a1 = (y * (x - (-b1))) / 2.0  # y = x + b1에서  y=0 일 때  x값  -b1
+#     a2 = (y * (b2 - x)) / 2.0  # y = -x + b2에서 y=0 일 때 x값  b2
+#     answer = a1 + a2
+#     return answer
+#
+#
+# ret = solution(10, 4)
+# print(ret)
 
 
-ret = solution(10, 4)
+# 09 업다운 숫자게임 정답 찾는 함수 빈칸 채우기
+def solution(answer):
+    min = 1
+    max = 100
+    result = 0
+    for i in answer:
+        result = (max + min) / 2  # 이진 탐색처럼 중간 값보다 큰지 작은지 체크
+        if min == max or i == 'c':  # 값이 검색이 안되거나, 값을 찾았거나
+            break
+        if i == 'u':  # 답보다 작으면  max 값을 중간 값으로 설정, 다시 검색
+            max = result
+        if i == 'd':
+            min = result  # 답보다 크면  min 값을 중간 값으로 설정, 다시 검색
+    return result
+
+
+answer = 'udduduudc'  # 테스트 값
+ret = solution(answer)
 print(ret)
