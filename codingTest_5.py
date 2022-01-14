@@ -104,22 +104,61 @@
 
 # 06 KTX 열차 승차 인원 구하는 함수 빈칸 채우기
 # up : 타는 사람, down : 내리는 사람
-def solution(down, up):
-    answer = 0
-    passenger = 0
-    n = len(down)  # len(up) 가능
-    for i in range(n):
-        passenger += up[i] - down[i]  # 탑승인원
-        stand = passenger - 240  # 입석 = 탑승명 - 좌석수
-        if stand < 0:  # 입석 없을 경우
-            stand = 0
-        if stand > 0 and stand > answer:  # 최대 입석 수 저장
-            answer = stand
-        print(passenger, stand)
-    return answer
+# def solution(down, up):
+#     answer = 0
+#     passenger = 0
+#     n = len(down)  # len(up) 가능
+#     for i in range(n):
+#         passenger += up[i] - down[i]  # 탑승인원
+#         stand = passenger - 240  # 입석 = 탑승명 - 좌석수
+#         if stand < 0:  # 입석 없을 경우
+#             stand = 0
+#         if stand > 0 and stand > answer:  # 최대 입석 수 저장
+#             answer = stand
+#         print(passenger, stand)
+#     return answer
+#
+#
+# up = [240, 100, 0, 160, 10, 140]
+# down = [0, 0, 140, 80, 0, 0]
+# ret = solution(down, up)
+# print(ret)
 
 
-up = [240, 100, 0, 160, 10, 140]
-down = [0, 0, 140, 80, 0, 0]
-ret = solution(down, up)
+# 07 판매 이익금을 구하는 함수 수정하기
+def func_a(a):
+    min = a[0]
+    for i in a:
+        if i < min:
+            min = i
+    return min
+
+
+def solution(price):
+    sales = [0 for _ in range(len(price))]
+    # print(sales)
+    for i in range(len(price)):
+        # * 이차원 배열이다 *
+        if price[i][0] < 5000:
+            percent = 0.25
+        elif price[i][0] < 15000:
+            percent = 0.20
+        elif price[i][0] < 100000:
+            percent = 0.15
+        else:
+            percent = 0.1
+
+        # sales[price.index(i)] = int(i[0] * percent * i[1])
+        sales[i] = int(price[i][0] * percent * price[i][1])
+        # ** 원가 * percent * 수량이다 **
+    return func_a(sales)
+
+
+price = [
+    [50000, 10],
+    [15000, 20],
+    [5000, 40],
+    [150000, 100]
+]
+ret = solution(price)
 print(ret)
