@@ -19,16 +19,42 @@
 
 
 # 02 3개 사면 추가 하나는 50% 할인 행사의 금액을 계산하는 함수 빈칸 채우기
-def solution(arr):
-    answer = 0
-    for i in range(len(arr)):
-        price = arr[i]  # 가격
-        if (i+1) % 4 == 0:  # 4번째는 반 값
-            price //= 2  # 반 값으로
-        answer += price
-    return answer
+# def solution(arr):
+#     answer = 0
+#     for i in range(len(arr)):
+#         price = arr[i]  # 가격
+#         if (i+1) % 4 == 0:  # 4번째는 반 값
+#             price //= 2  # 반 값으로
+#         answer += price
+#     return answer
+#
+#
+# arr = [100, 500, 200, 400, 300]
+# ret = solution(arr)
+# print(ret)
 
 
-arr = [100, 500, 200, 400, 300]
-ret = solution(arr)
+# 03 목재소의 매출액을 구하는 함수 수정하기
+def func_a(a, length):
+    for i in range(len(a)):
+        if a[i] >= length:
+            return i
+    return -1
+
+
+def solution(N, orders):
+    material = [8 for _ in range(N)]  # 초기값은 8 이어야 한다
+    # 8로 초기화한 8개 방이 만들어짐
+    k = 0
+    price = 0
+    for o in orders:
+        k = func_a(material, o)
+        if k >= 0:
+            material[k] -= o
+            price += 3000 * o
+    return price
+
+
+orders = [1, 3, 5, 7, 8]
+ret = solution(8, orders)
 print(ret)
