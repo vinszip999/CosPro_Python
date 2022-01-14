@@ -35,26 +35,45 @@
 
 
 # 03 목재소의 매출액을 구하는 함수 수정하기
-def func_a(a, length):
-    for i in range(len(a)):
-        if a[i] >= length:
-            return i
-    return -1
+# def func_a(a, length):
+#     for i in range(len(a)):
+#         if a[i] >= length:
+#             return i
+#     return -1
+#
+#
+# def solution(N, orders):
+#     material = [8 for _ in range(N)]  # 초기값은 8 이어야 한다
+#     # 8로 초기화한 8개 방이 만들어짐 [8, 8, 8, 8, 8, 8, 8, 8]
+#     k = 0
+#     price = 0
+#     for o in orders:
+#         # print(material)
+#         k = func_a(material, o)
+#         if k >= 0:
+#             material[k] -= o
+#             price += 3000 * o
+#     return price
+#
+#
+# orders = [1, 3, 5, 7, 8]
+# ret = solution(8, orders)
+# print(ret)
 
 
-def solution(N, orders):
-    material = [8 for _ in range(N)]  # 초기값은 8 이어야 한다
-    # 8로 초기화한 8개 방이 만들어짐
-    k = 0
-    price = 0
-    for o in orders:
-        k = func_a(material, o)
-        if k >= 0:
-            material[k] -= o
-            price += 3000 * o
-    return price
+# 04 영문 단어를 전화번호로 변환하는 함수 수정하기
+def solution(word):
+    num2alpha = ["oqz", "ij", "abc", "def", "gh", "kl", "mn", "prs", "tuv", "wxy"]
+    answer = ' '
+    for c in word:
+        for i in range(len(num2alpha)):
+            for a in num2alpha[i]:
+                if a == c:     # 비교 문자는 c
+                    answer += str(i)
+                    break
+    return answer
 
 
-orders = [1, 3, 5, 7, 8]
-ret = solution(8, orders)
+word = 'whitepawn'  # 941837296
+ret = solution(word)
 print(ret)
