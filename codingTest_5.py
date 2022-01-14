@@ -80,23 +80,46 @@
 
 
 # 05 주차장 요금 정산하는 함수 빈칸 채우기
-def func_a(a):
-    #             시간             분
-    return ((a // 100) * 60) + (a % 100)
+# def func_a(a):
+#     #             시간             분
+#     return ((a // 100) * 60) + (a % 100)
+#
+#
+# def solution(arr):
+#     answer = 0
+#     # 마감시간
+#     min_a = func_a(2200)  # 밤 10시 : 2200
+#     for i in arr:
+#         # 들어오는 시간
+#         min_b = func_a(i)  # 차량이 들어온 시간
+#         elapsed_minute = min_a - min_b
+#         answer += 1000 + (elapsed_minute // 10) * 500
+#     return answer
+#
+#
+# arr = [2200, 2200]
+# ret = solution(arr)
+# print(ret)
 
 
-def solution(arr):
+# 06 KTX 열차 승차 인원 구하는 함수 빈칸 채우기
+# up : 타는 사람, down : 내리는 사람
+def solution(down, up):
     answer = 0
-    # 마감시간
-    min_a = func_a(2200)  # 밤 10시 : 2200
-    for i in arr:
-        # 들어오는 시간
-        min_b = func_a(i)  # 차량이 들어온 시간
-        elapsed_minute = min_a - min_b
-        answer += 1000 + (elapsed_minute // 10) * 500
+    passenger = 0
+    n = len(down)  # len(up) 가능
+    for i in range(n):
+        passenger += up[i] - down[i]  # 탑승인원
+        stand = passenger - 240  # 입석 = 탑승명 - 좌석수
+        if stand < 0:  # 입석 없을 경우
+            stand = 0
+        if stand > 0 and stand > answer:  # 최대 입석 수 저장
+            answer = stand
+        print(passenger, stand)
     return answer
 
 
-arr = [2200, 2200]
-ret = solution(arr)
+up = [240, 100, 0, 160, 10, 140]
+down = [0, 0, 140, 80, 0, 0]
+ret = solution(down, up)
 print(ret)
