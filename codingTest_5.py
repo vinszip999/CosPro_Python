@@ -126,39 +126,54 @@
 
 
 # 07 판매 이익금을 구하는 함수 수정하기
-def func_a(a):
-    min = a[0]
-    for i in a:
-        if i < min:
-            min = i
-    return min
+# def func_a(a):
+#     min = a[0]
+#     for i in a:
+#         if i < min:
+#             min = i
+#     return min
+#
+#
+# def solution(price):
+#     sales = [0 for _ in range(len(price))]
+#     # print(sales)
+#     for i in range(len(price)):
+#         # * 이차원 배열이다 *
+#         if price[i][0] < 5000:
+#             percent = 0.25
+#         elif price[i][0] < 15000:
+#             percent = 0.20
+#         elif price[i][0] < 100000:
+#             percent = 0.15
+#         else:
+#             percent = 0.1
+#
+#         # sales[price.index(i)] = int(i[0] * percent * i[1])
+#         sales[i] = int(price[i][0] * percent * price[i][1])
+#         # ** 원가 * percent * 수량이다 ** / 금액 정수로 바꿔줌
+#     return func_a(sales)
+#
+#
+# price = [
+#     [50000, 10],
+#     [15000, 20],
+#     [5000, 40],
+#     [150000, 100]
+# ]
+# ret = solution(price)
+# print(ret)
 
 
-def solution(price):
-    sales = [0 for _ in range(len(price))]
-    # print(sales)
-    for i in range(len(price)):
-        # * 이차원 배열이다 *
-        if price[i][0] < 5000:
-            percent = 0.25
-        elif price[i][0] < 15000:
-            percent = 0.20
-        elif price[i][0] < 100000:
-            percent = 0.15
-        else:
-            percent = 0.1
-
-        # sales[price.index(i)] = int(i[0] * percent * i[1])
-        sales[i] = int(price[i][0] * percent * price[i][1])
-        # ** 원가 * percent * 수량이다 **
-    return func_a(sales)
+# 08 직선으로 교차하는 두 직선과 x축의 선이 이루는 삼각형 면적을 구하는 함수 작성하기
+def solution(x, y):
+    answer = 0
+    b1 = y - x   # y = x+b1에서의 b1졀편
+    b2 = y + x  # y = -x+b2에서의 b2졀편
+    a1 = (y * (x - (-b1))) / 2.0  # y = x + b1에서  y=0 일 때  x값  -b1
+    a2 = (y * (b2 - x)) / 2.0  # y = -x + b2에서 y=0 일 때 x값  b2
+    answer = a1 + a2
+    return answer
 
 
-price = [
-    [50000, 10],
-    [15000, 20],
-    [5000, 40],
-    [150000, 100]
-]
-ret = solution(price)
+ret = solution(10, 4)
 print(ret)
